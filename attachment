@@ -1,0 +1,168 @@
+//QUESTION 1 :a program that prints the numbers from 1 to 100. For multiples of 3, print "Fizz"; for multiples of 5, print "Buzz"; and for numbers that are multiples of both 3 and 5, print "FizzBuzz".
+public class FizzBuzz {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.println("FizzBuzz" + i);
+            } else if (i % 3 == 0) {
+                System.out.println("Fizz" + i);
+            } else if (i % 5 == 0) {
+                System.out.println("Buzz" + i);
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
+
+
+
+
+//Question 2: Fibonacci Sequence
+public class Fibonacci {
+    public static void main(String[] args) {
+        int limit = 100;
+        int firstTerm = 0, secondTerm = 1;
+
+        System.out.println("Fibonacci Sequence up to " + limit + ":");
+        System.out.print(firstTerm + ", " + secondTerm);
+
+        while (firstTerm + secondTerm <= limit) {
+            int nextTerm = firstTerm + secondTerm;
+            System.out.print(", " + nextTerm);
+            firstTerm = secondTerm;
+            secondTerm = nextTerm;
+        }
+    }
+}
+
+
+
+//Question 3:a program that takes an integer as input and returns true if the input is a power of two.
+import java.util.Scanner;
+public class PowerOfTwoChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        if (isPowerOfTwo(num)) {
+            System.out.println(num + " is a power of two.");
+        } else {
+            System.out.println(num + " is not a power of two.");
+        }
+
+        scanner.close();
+    }
+
+    private static boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+}
+
+
+
+//Question 4: Capitalize Words
+import java.util.Scanner;
+
+public class CapitalizeWords {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        String result = capitalizeWords(input);
+        System.out.println("Capitalized String: " + result);
+
+        scanner.close();
+    }
+
+    private static String capitalizeWords(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        String[] words = str.split("\\s");
+
+        StringBuilder result = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                result.append(Character.toUpperCase(word.charAt(0)))
+                      .append(word.substring(1))
+                      .append(" ");
+            }
+        }
+
+        return result.toString().trim();
+    }
+}
+
+
+
+//Question 5: Reverse Integer
+import java.util.Scanner;
+
+public class ReverseDigits {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int input = scanner.nextInt();
+
+        int reversed = reverseDigits(input);
+        System.out.println("Reversed Integer: " + reversed);
+
+        scanner.close();
+    }
+
+    private static int reverseDigits(int num) {
+        int reversed = 0;
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        return reversed;
+    }
+}
+
+
+
+//   Question 6:a program that counts the number of vowels in a sentence.
+import java.util.Scanner;
+
+public class CountVowels {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String sentence = scanner.nextLine();
+
+        int vowelCount = countVowels(sentence);
+        System.out.println("Number of vowels in the sentence: " + vowelCount);
+
+        scanner.close();
+    }
+
+    private static int countVowels(String str) {
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+
+        str = str.toLowerCase();
+
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
